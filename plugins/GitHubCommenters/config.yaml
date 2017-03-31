@@ -10,8 +10,8 @@ commenter_authenticators:
     GitHub:
       class: GitHubCommenters::Auth
       label: GitHub
-      logo: plugins/GitHubCommenters/signin_GitHub.png
-      logo_small: plugins/GitHubCommenters/GitHub_logo.png
+      logo: plugins/GitHubCommenters/index.png
+      logo_small: plugins/GitHubCommenters/small_logo.png
       login_form: |
         <form id="GitHub-signin-form" method="post" action="<mt:var name="script_url">">
         <input type="hidden" name="__mode"   value="login_external">
