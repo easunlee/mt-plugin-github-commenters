@@ -136,17 +136,7 @@ sub handle_sign_in {
     my $user_data ;
     my ($git_id,$nickname,$figureurl);
 
-#     JS MODE # 没完全开放，需要配合 JSSDK来实现
-#     if ( $q->param("js_mode") && $q->param("openid") ) #JS MODE # 没完全开放，需要配合 JSSDK来实现
-#     {
-#        $git_id    =  $q->param("openid");
-#        $nickname = $q->param("nickname");
-#        $figureurl= $q->param("figureurl_qq_1");  # figureurl GitHub空间 30x30头像。  figureurl_qq_1 为GitHub本身头像，但是是40x40 注释 By 路杨（easun.org）
-#     }
-
-#   else #unless ($git_id)  #我们认为是普通模式
-#   {
-         my $return_url = __create_return_url($app);
+    my $return_url = __create_return_url($app);
          ## 检测 state 是否一致，防止跨站漏洞  By 路杨###
         require Digest::MD5;
         my $md5_state = Digest::MD5::md5_hex($return_url);
@@ -178,7 +168,7 @@ sub handle_sign_in {
               "redirect_uri=$return_url",
               "client_secret=$GitHub_api_secret",
               "code=$success_code" ,
-               'grant_type=authorization_code',
+   #           'grant_type=authorization_code',
             );
 
          my $url = "https://github.com/login/oauth/access_token?"
@@ -210,18 +200,9 @@ sub handle_sign_in {
             my $user_data_temp = JSON::from_json( $data_tmps );
             $git_id    = $user_data_temp->{id};  #第3次我们想要的openid， 注释 By 路杨（easun.org）
             $nickname = $user_data_temp->{name};
-            $figureurl    = $user_data_temp->{avatar_url};  # avatar_url GitHub空间 30x30头像。   注释 By 路杨（easun.org）
-         
+            $figureurl    = $user_data_temp->{avatar_url};  # avatar_url GitHub头像。   注释 By 路杨（easun.org）  
 
-  #           $url = "https://graph.qq.com/user/get_user_info?access_token=$access_token&oauth_consumer_key=$GitHub_api_key&openid=$git_id";
-  #           $response = $ua->get($url);
-   #          return $app->errtrans("Invalid request.-[_1]", "Get UserInfo not Success form GitHub.com.")
-    #                    unless $response->is_success;
-     #         $user_data = JSON::from_json( $response->decoded_content() );
-     #         $nickname = $user_data->{name};
-     #         $figureurl    = $user_data->{avatar_url};  # figureurl GitHub空间 30x30头像。  figureurl_qq_1 为GitHub本身头像，但是是40x40 注释 By 路杨（easun.org）
 
-#      } # End unless openid
  ################################################
 
     my $author_class = $app->model('author');
