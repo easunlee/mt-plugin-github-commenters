@@ -1,4 +1,4 @@
-# mt-plugin-github-commenters
+# GitHubCommenters
 GitHub Connect Commenters Plugin for Movable Type   
  
 GitHub登陆插件-用GitHub账号登陆您的MT博客 
