@@ -200,7 +200,7 @@ sub handle_sign_in {
             my $user_data_temp = JSON::from_json( $data_tmps );
             $git_id    = $user_data_temp->{id};  #第3次我们想要的openid， 注释 By 路杨（easun.org）
             $nickname = $user_data_temp->{name};
-            $figureurl    = $user_data_temp->{avatar_url};  # avatar_url GitHub头像。   注释 By 路杨（easun.org）  
+            $figureurl    = $user_data_temp->{avatar_url} . '&s=50';  # avatar_url GitHub头像。   注释 By 路杨（easun.org）  
 
 
  ################################################
