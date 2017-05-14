@@ -237,7 +237,7 @@ sub handle_sign_in {
      }
 
 ## __get_userpic 为远程的GitHub头像下载在本地，并生成不同大小的缩略图，比较消耗资源，可以屏蔽掉。
- #   __get_userpic($cmntr, $figureurl);
+  __get_userpic($cmntr, $figureurl);
 
     $app->make_commenter_session($cmntr)
         or return $app->error(
