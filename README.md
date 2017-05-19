@@ -14,9 +14,7 @@ profile picture.
 
 ## Prerequisites
 
-* Movable Type 5.1 or higher
 * Movable Type 4.3 or higher
-  On Movable Type 4.3x, Need upgrade HTTP::Message module latest. http://search.cpan.org/~gaas/HTTP-Message/
 * JSON (bundled with MT)
 
 ## Installation
