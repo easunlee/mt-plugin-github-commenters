@@ -186,8 +186,8 @@ sub handle_sign_in {
                $access_token =~ s/\s//g;
                $access_token =~ s/&.*//;
 
-          $url  = "https://api.github.com/user?access_token=$access_token"; #第2次我们想要的access_token， By 路杨
-          $response = $ua->get($url);
+          $url  = "https://api.github.com/user"; #第2次我们想要的access_token， By 路杨
+          $response = $ua->get($url,'Authorization' => 'token '.$access_token);  #修改认证模式。
           return $app->errtrans("Invalid request.-[_1]", "Get openID not Success form GitHub.com.")
                 unless $response->is_success;
 
